@@ -1,3 +1,5 @@
 *.o
 *.exe
 simulation_results/*
+nul
+./nul
