@@ -1,164 +1,276 @@
 # Airport Simulation - DEVS Model in Cadmium
 
-This repository contains an airport simulation model implemented using the DEVS formalism in Cadmium.
+A Cadmium v2 implementation of an airport landing and takeoff simulation using the DEVS (Discrete Event System Specification) formalism. This project ports the original CD++ model by Luciano Burotti and Luis Fernando De Simoni to Cadmium.
+
+## Authors
+
+- **Hasib Khodayar**
+- **Hajar Assim**
+
+Course: SYSC 4906G, Winter 2026, Carleton University
 
 ## Repository Structure
 
 ```
-Cadmium-Airport/
+SYSC4906-Airport-Simulation/
 ├── README.md
-├── Airport_Simulation_Report.pdf       # Complete model documentation
 ├── makefile
-├── atomics/                            # Atomic models
-│   ├── control_tower.hpp
+├── atomics/                            # Atomic DEVS models
+│   ├── controlTower.hpp
 │   ├── queue.hpp
 │   ├── runway.hpp
 │   ├── selector.hpp
-│   ├── storage_bay.hpp
+│   ├── storageBay.hpp
 │   └── merger.hpp
-├── data_structures/                    # Custom data types
+├── coupled/                            # Coupled DEVS models
+│   ├── storageBank.hpp
+│   └── hangar.hpp
+├── data_structures/
 │   ├── plane_message.hpp
 │   └── plane_message.cpp
 ├── input_data/                         # Test input files
-│   ├── input_full_simulation.txt
-│   └── [test files for each atomic model]
-├── test/                               # Unit tests for atomic models
+│   ├── control_tower/                  # CT-1 to CT-4
+│   ├── queue/                          # Q-1 to Q-5
+│   ├── runway/                         # R-1 to R-3
+│   ├── selector/                       # S-1 to S-5
+│   ├── storage_bay/                    # SB-1 to SB-2
+│   ├── merger/                         # M-1 to M-3
+│   ├── storage_bank/                   # SBK-1 to SBK-2
+│   ├── hangar/                         # H-1 to H-2
+│   └── T1-T6_*.txt                     # Top model experiments
+├── test/                               # Test drivers
 │   ├── main_control_tower_test.cpp
 │   ├── main_queue_test.cpp
 │   ├── main_runway_test.cpp
 │   ├── main_selector_test.cpp
 │   ├── main_storage_bay_test.cpp
-│   └── main_merger_test.cpp
-├── top_model/                          # Top-level coupled model
-│   └── main.cpp
-├── vendor/                             # Utility headers
-│   ├── NDTime.hpp
-│   └── iestream.hpp
-├── bin/                                # Executables (auto-generated)
-├── build/                              # Build artifacts (auto-generated)
-└── simulation_results/                 # Simulation outputs (auto-generated)
+│   ├── main_merger_test.cpp
+│   └── main_coupled_test.cpp
+├── top_model/
+│   └── main.cpp                        # Main simulation driver
+├── bin/                                # Executables (generated)
+├── build/                              # Object files (generated)
+└── simulation_results/                 # Output CSV files (generated)
 ```
 
 ## Model Overview
 
-The airport simulation models aircraft landing and takeoff operations with **3 hierarchical levels** and **6 atomic models**.
+The airport simulation models aircraft landing and takeoff operations using a 3-level coupled model hierarchy with 6 atomic models.
 
 ### Atomic Models
 
-| Model | Description |
-|-------|-------------|
-| **ControlTower** | Manages landing/takeoff requests, coordinates queues and runway |
-| **Queue** | Buffers incoming planes (separate instances for landing and takeoff) |
-| **Runway** | Handles aircraft landing and takeoff operations |
-| **Selector** | Routes planes to storage bays based on plane ID ranges |
-| **StorageBay** | Temporarily stores aircraft (4 instances: Bay1-4) |
-| **Merger** | Combines outputs from multiple storage bays |
+| Model | States | Timing | Description |
+|-------|--------|--------|-------------|
+| **ControlTower** | IDLE, SIGNAL, WAIT | σ=0 (SIGNAL), σ=60s (WAIT) | Coordinates runway access between landing and takeoff queues |
+| **Queue** | IDLE, SENDING, WAIT_ACK | σ=0 (SENDING) | FIFO buffer with stop/done flow control |
+| **Runway** | IDLE, LANDING, TAKEOFF | σ=60s (operations) | Processes aircraft landing/takeoff |
+| **Selector** | IDLE, ROUTING | σ=30s (routing delay) | Routes planes to bays based on ID |
+| **StorageBay** | IDLE, ACTIVE | σ=0 (immediate drain) | Stores planes, drains to merger |
+| **Merger** | IDLE, ACTIVE | σ=0 (immediate output) | Combines outputs from 4 bays |
 
-### Coupled Models (3 Levels)
+### Bay Assignment (Bug #4 Fix)
 
-1. **Top** - Contains ControlTower, landing_queue, takeoff_queue, Runway, and Hangar
-2. **Hangar** - Contains Selector and StorageBank
-3. **StorageBank** - Contains 4 StorageBay instances and Merger
+The Selector routes planes to storage bays based on plane ID:
 
-### System Flow
+| Bay | ID Range | Condition |
+|-----|----------|-----------|
+| Bay 1 | 0-249 | id ≤ 249 |
+| Bay 2 | 250-499 | id ≤ 499 |
+| Bay 3 | 500-749 | id ≤ 749 |
+| Bay 4 | 750-999 | id ≤ 999 |
+
+### Coupled Model Hierarchy
 
 ```
-External Input → landing_queue → ControlTower → Runway (land) →
-Selector → StorageBay[1-4] → Merger → takeoff_queue →
-ControlTower → Runway (takeoff) → External Output
+AirportTop
+├── landing_queue (Queue)
+├── takeoff_queue (Queue)
+├── ControlTower
+├── Runway
+└── Hangar
+    ├── Selector
+    └── StorageBank
+        ├── Bay1 (StorageBay)
+        ├── Bay2 (StorageBay)
+        ├── Bay3 (StorageBay)
+        ├── Bay4 (StorageBay)
+        └── Merger
 ```
 
-## Setup & Installation
+### Data Flow
 
-### Prerequisites
+```
+Arriving Plane → landing_queue → ControlTower → Runway (LANDING)
+                                      ↓
+                              Hangar/Selector → Bay[1-4] → Merger
+                                      ↓
+                    ControlTower ← takeoff_queue ←
+                          ↓
+                    Runway (TAKEOFF) → Departed Plane
+```
 
-- C++17 compatible compiler (g++ recommended)
-- [Cadmium](https://github.com/SimulationEverywhere/cadmium) framework
-- [DESTimes](https://github.com/SimulationEverywhere/DESTimes) library
+## Prerequisites
 
-### Update Include Paths
+- C++17 compatible compiler (g++ 8+ recommended)
+- [Cadmium v2](https://github.com/SimulationEverywhere/cadmium) framework
 
-Edit the `makefile` to point to your Cadmium and DESTimes installation:
+## Setup
+
+1. Clone this repository
+2. Update the `makefile` include path to match your Cadmium installation:
 
 ```makefile
-INCLUDECADMIUM=-I ../../cadmium/include
-INCLUDEDESTIMES=-I ../../DESTimes/include
+INCLUDECADMIUM = -I ../../cadmium_v2/include
 ```
 
-Update these paths based on where you installed the libraries.
+Or set the `CADMIUM` environment variable:
+```bash
+export CADMIUM=/path/to/cadmium_v2
+```
 
-## Building the Project
+## Building
 
 ```bash
-# Clean previous builds and compile everything
-make clean; make all
+# Clean and build everything
+make clean && make all
 ```
 
-This will:
-- Create `bin/` directory with all executables
-- Create `build/` directory with object files
-- Create `simulation_results/` directory for outputs
+This creates:
+- `bin/AIRPORT_SIMULATION` - Main simulation executable
+- `bin/CONTROL_TOWER_TEST` - ControlTower atomic tests
+- `bin/QUEUE_TEST` - Queue atomic tests
+- `bin/RUNWAY_TEST` - Runway atomic tests
+- `bin/SELECTOR_TEST` - Selector atomic tests
+- `bin/STORAGE_BAY_TEST` - StorageBay atomic tests
+- `bin/MERGER_TEST` - Merger atomic tests
+- `bin/COUPLED_TEST` - StorageBank and Hangar coupled tests
 
 ## Running Tests
 
-### Individual Atomic Model Tests
+### Run All Tests
+
+```bash
+make runalltests
+```
+
+This runs all atomic and coupled model tests sequentially.
+
+### Run Individual Test Suites
 
 ```bash
 cd bin
 
-# Run individual tests
-./CONTROL_TOWER_TEST
-./QUEUE_TEST
-./RUNWAY_TEST
-./SELECTOR_TEST
-./STORAGE_BAY_TEST
-./MERGER_TEST
+./CONTROL_TOWER_TEST    # CT-1 to CT-4
+./QUEUE_TEST            # Q-1 to Q-5
+./RUNWAY_TEST           # R-1 to R-3
+./SELECTOR_TEST         # S-1 to S-5
+./STORAGE_BAY_TEST      # SB-1 to SB-2
+./MERGER_TEST           # M-1 to M-3
+./COUPLED_TEST          # SBK-1, SBK-2, H-1, H-2
 ```
 
-Test outputs will be saved in `simulation_results/` as:
-- `{model_name}_test_output_messages.txt`
-- `{model_name}_test_output_state.txt`
+### Test Cases
 
-### Full Simulation
+| Test ID | Model | Description |
+|---------|-------|-------------|
+| CT-1 | ControlTower | Single landing request |
+| CT-2 | ControlTower | Single takeoff request |
+| CT-3 | ControlTower | Back-to-back operations |
+| CT-4 | ControlTower | Request while busy |
+| Q-1 | Queue | Single plane enqueue/dequeue |
+| Q-2 | Queue | Multiple planes |
+| Q-3 | Queue | Stop and resume |
+| Q-4 | Queue | Stop while empty |
+| Q-5 | Queue | Enqueue while stopped |
+| R-1 | Runway | Landing operation |
+| R-2 | Runway | Takeoff operation |
+| R-3 | Runway | Sequential operations |
+| S-1 to S-4 | Selector | Route to Bay 1-4 |
+| S-5 | Selector | Boundary ID values (249, 250, 499, 500, 749, 750) |
+| SB-1 | StorageBay | Single plane |
+| SB-2 | StorageBay | FIFO ordering |
+| M-1 | Merger | Single input |
+| M-2 | Merger | All ports sequentially |
+| M-3 | Merger | Simultaneous inputs |
+| SBK-1 | StorageBank | Single bay routing |
+| SBK-2 | StorageBank | All bays |
+| H-1 | Hangar | Route and store |
+| H-2 | Hangar | All bays routing |
+
+## Running Experiments
+
+### Run All Experiments
+
+```bash
+make runexperiments
+```
+
+### Run Individual Experiments
+
+```bash
+make run_T1    # Single plane full lifecycle
+make run_T2    # Burst arrivals (6 planes at once)
+make run_T3    # Staggered arrivals (50 planes over time)
+make run_T4    # Rapid arrivals (5 planes, 30s apart)
+make run_T5    # Boundary ID values
+make run_T6    # Bay stress test (10 planes to Bay 1)
+```
+
+### Manual Execution
 
 ```bash
 cd bin
-./AIRPORT_SIMULATION ../input_data/input_full_simulation.txt
+./AIRPORT_SIMULATION ../input_data/T1_single_lifecycle.txt 500
 ```
 
-Simulation outputs will be saved as:
-- `simulation_results/airport_output_messages.txt`
-- `simulation_results/airport_output_state.txt`
+Arguments:
+- `input_file` - Path to input file
+- `simulation_time` - Maximum simulation time in seconds (default: 36000)
+
+Results are saved to `simulation_results/{input_name}_output.csv`
 
 ## Input File Format
 
-Input files contain event arrivals in the format:
+### Single-Port Models (Selector, StorageBay)
+
 ```
-HH:MM:SS:MS port_name value
+time value
+```
+
+Example (`S1_bay1.txt`):
+```
+10 100
+```
+Plane 100 arrives at t=10s
+
+### Multi-Port Models (ControlTower, Queue, Runway, Merger)
+
+```
+time port value
+```
+
+Example (`CT1_single_landing.txt`):
+```
+60 0 5
+```
+Plane 5 arrives on port 0 (in_landing) at t=60s
+
+Port mappings:
+- **ControlTower**: 0=in_landing, 1=in_takeoff
+- **Queue**: 0=plane, 1=stop, 2=done
+- **Runway**: 0=land, 1=takeoff
+- **Merger**: 1=in1, 2=in2, 3=in3, 4=in4
+
+## Output Format
+
+Simulation output is CSV with columns:
+```
+time;model_id;model_name;port_name;data
 ```
 
 Example:
 ```
-00:01:00:00 in_landing 100
-00:01:30:00 in_landing 250
-00:02:00:00 in_landing 500
+60;1;ControlTower;land;5
+120;1;ControlTower;done_landing;1
 ```
 
-See `input_data/` folder for more examples.
-
-## Documentation
-
-For detailed information, see **Airport_Simulation_Report.pdf** which includes:
-- DEVS formal specifications (M = <X, Y, S, δext, δint, λ, ta>)
-- DEVS Graphs for all atomic models
-- Coupling diagrams showing model hierarchy
-- Execution traces and test results
-- Model analysis and validation
-
-## Authors
-
-SYSC 4906G - Winter 2026
-
-## License
-
-Academic use only - SYSC 4906G Assignment 1
