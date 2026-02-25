@@ -118,10 +118,10 @@ Arriving Plane → landing_queue → ControlTower → Runway (LANDING)
 
 1. Clone this repository
 
-2. Clone Cadmium v2 (if not already installed):
+2. Clone Cadmium v2 (if not already installed, target theb devrt branch):
 ```bash
 cd ~
-git clone https://github.com/SimulationEverywhere/cadmium_v2.git
+git clone https://github.com/SimulationEverywhere/cadmium_v2 -b dev-rt
 ```
 
 3. The makefile defaults to `~/cadmium_v2`. If your Cadmium is installed elsewhere, set the `CADMIUM_HOME` environment variable:

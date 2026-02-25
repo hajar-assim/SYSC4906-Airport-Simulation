@@ -14,6 +14,8 @@
 #include <cadmium/simulation/root_coordinator.hpp>
 #include <cadmium/simulation/logger/stdout.hpp>
 #include <cadmium/modeling/devs/coupled.hpp>
+#include <cadmium/lib/iestream.hpp>
+
 #include "../coupled/hangar.hpp"
 
 #include <iostream>
