@@ -1,7 +1,9 @@
 CC=g++
 CFLAGS=-std=c++17
 
-INCLUDECADMIUM=-I ../../cadmium/include
+# Cadmium include path - set CADMIUM_HOME env var or edit this path
+CADMIUM_HOME ?= $(HOME)/cadmium_v2
+INCLUDECADMIUM=-I $(CADMIUM_HOME)/include
 INCLUDEDESTIMES=-I ../../DESTimes/include
 INCLUDEJSONEXPORTER=-I ../../CadmiumModelJSONExporter/include
 
@@ -53,6 +55,53 @@ simulator: main_top.o plane_message.o
 #TARGET TO COMPILE EVERYTHING (SIMULATOR + TESTS)
 all: simulator tests
 
+#RUN EXPERIMENTS
+runexperiments: simulator
+	@echo "=== Running T1: Single Lifecycle ==="
+	./bin/AIRPORT_SIMULATION input_data/T1_single_lifecycle.txt 500
+	@echo "=== Running T2: Burst Test ==="
+	./bin/AIRPORT_SIMULATION input_data/T2_burst_test.txt 3600
+	@echo "=== Running T3: Staggered Test ==="
+	./bin/AIRPORT_SIMULATION input_data/T3_staggered_test.txt 18000
+	@echo "=== Running T4: Rapid Test ==="
+	./bin/AIRPORT_SIMULATION input_data/T4_rapid_test.txt 1800
+	@echo "=== Running T5: Boundary Test ==="
+	./bin/AIRPORT_SIMULATION input_data/T5_boundary_test.txt 3600
+	@echo "=== Running T6: Bay Stress Test ==="
+	./bin/AIRPORT_SIMULATION input_data/T6_bay_stress_test.txt 3600
+	@echo "=== All Experiments Complete ==="
+
+run_T1: simulator
+	./bin/AIRPORT_SIMULATION input_data/T1_single_lifecycle.txt 500
+
+run_T2: simulator
+	./bin/AIRPORT_SIMULATION input_data/T2_burst_test.txt 3600
+
+run_T3: simulator
+	./bin/AIRPORT_SIMULATION input_data/T3_staggered_test.txt 18000
+
+run_T4: simulator
+	./bin/AIRPORT_SIMULATION input_data/T4_rapid_test.txt 1800
+
+run_T5: simulator
+	./bin/AIRPORT_SIMULATION input_data/T5_boundary_test.txt 3600
+
+run_T6: simulator
+	./bin/AIRPORT_SIMULATION input_data/T6_bay_stress_test.txt 3600
+
+#RUN ALL TESTS
+runalltests: tests
+	@echo "=== Running All Atomic Tests ==="
+	./bin/CONTROL_TOWER_TEST
+	./bin/QUEUE_TEST
+	./bin/RUNWAY_TEST
+	./bin/SELECTOR_TEST
+	./bin/STORAGE_BAY_TEST
+	./bin/MERGER_TEST
+	@echo "=== All Tests Complete ==="
+
 #CLEAN COMMANDS
 clean:
 	rm -f bin/* build/*
+
+.PHONY: all simulator tests clean runexperiments runalltests run_T1 run_T2 run_T3 run_T4 run_T5 run_T6

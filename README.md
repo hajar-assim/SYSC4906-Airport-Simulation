@@ -112,20 +112,26 @@ Arriving Plane → landing_queue → ControlTower → Runway (LANDING)
 ## Prerequisites
 
 - C++17 compatible compiler (g++ 8+ recommended)
-- [Cadmium v2](https://github.com/SimulationEverywhere/cadmium) framework
+- [Cadmium v2](https://github.com/SimulationEverywhere/cadmium_v2) framework
 
 ## Setup
 
 1. Clone this repository
-2. Update the `makefile` include path to match your Cadmium installation:
 
-```makefile
-INCLUDECADMIUM = -I ../../cadmium_v2/include
+2. Clone Cadmium v2 (if not already installed):
+```bash
+cd ~
+git clone https://github.com/SimulationEverywhere/cadmium_v2.git
 ```
 
-Or set the `CADMIUM` environment variable:
+3. The makefile defaults to `~/cadmium_v2`. If your Cadmium is installed elsewhere, set the `CADMIUM_HOME` environment variable:
 ```bash
-export CADMIUM=/path/to/cadmium_v2
+export CADMIUM_HOME=/path/to/your/cadmium_v2
+```
+
+Or edit the makefile directly:
+```makefile
+CADMIUM_HOME ?= /your/custom/path
 ```
 
 ## Building
