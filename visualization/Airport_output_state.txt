@@ -1,0 +1,220 @@
+00:00:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: IDLE & op: NONE & plane: 0 & pendingL: 0 & pendingT: 0 & sigma: inf
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: IDLE & plane: 0 & sigma: inf
+State for model Selector is phase: IDLE & plane: 0 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 0 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 0 & sigma: inf
+00:01:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 100 & pendingL: 0 & pendingT: 0 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 100 & sigma: 60
+State for model Selector is phase: IDLE & plane: 0 & pending: 0 & sigma: inf
+State for model landing_queue is phase: WAIT_ACK & size: 5 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+00:02:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 300 & pendingL: 0 & pendingT: 0 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 300 & sigma: 60
+State for model Selector is phase: ROUTING & plane: 100 & pending: 0 & sigma: 30
+State for model landing_queue is phase: WAIT_ACK & size: 4 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+00:02:30:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 300 & pendingL: 0 & pendingT: 0 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 300 & sigma: 60
+State for model Selector is phase: IDLE & plane: 100 & pending: 0 & sigma: inf
+State for model landing_queue is phase: WAIT_ACK & size: 4 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 1 & busy: 1 & sigma: inf
+00:03:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 500 & pendingL: 0 & pendingT: 1 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 500 & sigma: 60
+State for model Selector is phase: ROUTING & plane: 300 & pending: 0 & sigma: 30
+State for model landing_queue is phase: WAIT_ACK & size: 3 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+00:03:30:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 500 & pendingL: 0 & pendingT: 1 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 500 & sigma: 60
+State for model Selector is phase: IDLE & plane: 300 & pending: 0 & sigma: inf
+State for model landing_queue is phase: WAIT_ACK & size: 3 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 1 & busy: 1 & sigma: inf
+00:04:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 100 & pendingL: 1 & pendingT: 1 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 100 & sigma: 60
+State for model Selector is phase: ROUTING & plane: 500 & pending: 0 & sigma: 30
+State for model landing_queue is phase: WAIT_ACK & size: 2 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+00:04:30:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 100 & pendingL: 1 & pendingT: 1 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 100 & sigma: 60
+State for model Selector is phase: IDLE & plane: 500 & pending: 0 & sigma: inf
+State for model landing_queue is phase: WAIT_ACK & size: 2 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 1 & busy: 1 & sigma: inf
+00:05:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 750 & pendingL: 1 & pendingT: 2 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 750 & sigma: 60
+State for model Selector is phase: IDLE & plane: 500 & pending: 0 & sigma: inf
+State for model landing_queue is phase: WAIT_ACK & size: 1 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+00:06:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 150 & pendingL: 1 & pendingT: 2 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 150 & sigma: 60
+State for model Selector is phase: ROUTING & plane: 750 & pending: 0 & sigma: 30
+State for model landing_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+00:06:30:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 150 & pendingL: 1 & pendingT: 2 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 150 & sigma: 60
+State for model Selector is phase: IDLE & plane: 750 & pending: 0 & sigma: inf
+State for model landing_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 1 & busy: 1 & sigma: inf
+00:07:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 400 & pendingL: 0 & pendingT: 3 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 400 & sigma: 60
+State for model Selector is phase: ROUTING & plane: 150 & pending: 0 & sigma: 30
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+00:07:30:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: LANDING & plane: 400 & pendingL: 0 & pendingT: 3 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: LANDING & plane: 400 & sigma: 60
+State for model Selector is phase: IDLE & plane: 150 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 1 & busy: 1 & sigma: inf
+00:08:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 300 & pendingL: 0 & pendingT: 3 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 300 & sigma: 60
+State for model Selector is phase: ROUTING & plane: 400 & pending: 0 & sigma: 30
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+00:08:30:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 300 & pendingL: 0 & pendingT: 3 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 300 & sigma: 60
+State for model Selector is phase: IDLE & plane: 400 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 1 & busy: 1 & sigma: inf
+00:09:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 500 & pendingL: 0 & pendingT: 3 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 500 & sigma: 60
+State for model Selector is phase: IDLE & plane: 400 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: WAIT_ACK & size: 0 & busy: 1 & sigma: inf
+00:10:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 750 & pendingL: 0 & pendingT: 2 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 750 & sigma: 60
+State for model Selector is phase: IDLE & plane: 400 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+00:11:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 150 & pendingL: 0 & pendingT: 1 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 150 & sigma: 60
+State for model Selector is phase: IDLE & plane: 400 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+00:12:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: WAIT & op: TAKEOFF & plane: 400 & pendingL: 0 & pendingT: 0 & sigma: 60
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: TAKEOFF & plane: 400 & sigma: 60
+State for model Selector is phase: IDLE & plane: 400 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 1 & sigma: inf
+00:13:00:000
+State for model Bay1 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay2 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay3 is phase: IDLE & size: 0 & sigma: inf
+State for model Bay4 is phase: IDLE & size: 0 & sigma: inf
+State for model ControlTower is phase: IDLE & op: NONE & plane: 400 & pendingL: 0 & pendingT: 0 & sigma: inf
+State for model Merger is phase: IDLE & size: 0 & sigma: inf
+State for model Runway is phase: IDLE & plane: 400 & sigma: inf
+State for model Selector is phase: IDLE & plane: 400 & pending: 0 & sigma: inf
+State for model landing_queue is phase: IDLE & size: 0 & busy: 0 & sigma: inf
+State for model takeoff_queue is phase: IDLE & size: 0 & busy: 0 & sigma: inf

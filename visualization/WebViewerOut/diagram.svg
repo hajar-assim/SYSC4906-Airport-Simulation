@@ -1,0 +1,190 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1200px" height="560px" viewBox="-0.5 -0.5 1200 560" style="cursor: none; pointer-events: none;">
+   <g style="cursor: none; pointer-events: none;">
+      <!-- Generator (atomic) -->
+      <rect x="20" y="180" width="80" height="60" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-0" devs-model-id="Generator" style="cursor: none; pointer-events: none;"></rect>
+      <text x="60" y="215" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" devs-model-id="Generator" style="cursor: none; pointer-events: none;">Generator</text>
+      <text x="105" y="210" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Generator" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- landing_queue (atomic) -->
+      <rect x="140" y="80" width="100" height="90" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-1" devs-model-id="landing_queue" style="cursor: none; pointer-events: none;"></rect>
+      <text x="190" y="130" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle" devs-model-id="landing_queue" style="cursor: none; pointer-events: none;">landing_queue</text>
+      <text x="135" y="105" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="landing_queue" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="245" y="105" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="landing_queue" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+      <text x="135" y="145" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="landing_queue" devs-port-name="stop" style="cursor: none; pointer-events: none;">stop</text>
+      <text x="135" y="162" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="landing_queue" devs-port-name="done" style="cursor: none; pointer-events: none;">done</text>
+
+      <!-- takeoff_queue (atomic) -->
+      <rect x="140" y="280" width="100" height="90" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-2" devs-model-id="takeoff_queue" style="cursor: none; pointer-events: none;"></rect>
+      <text x="190" y="330" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle" devs-model-id="takeoff_queue" style="cursor: none; pointer-events: none;">takeoff_queue</text>
+      <text x="135" y="305" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="takeoff_queue" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="245" y="305" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="takeoff_queue" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+      <text x="135" y="345" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="takeoff_queue" devs-port-name="stop" style="cursor: none; pointer-events: none;">stop</text>
+      <text x="135" y="362" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="takeoff_queue" devs-port-name="done" style="cursor: none; pointer-events: none;">done</text>
+
+      <!-- ControlTower (atomic) -->
+      <rect x="290" y="120" width="120" height="180" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-3" devs-model-id="ControlTower" style="cursor: none; pointer-events: none;"></rect>
+      <text x="350" y="215" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" devs-model-id="ControlTower" style="cursor: none; pointer-events: none;">ControlTower</text>
+      <text x="285" y="145" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="ControlTower" devs-port-name="in_landing" style="cursor: none; pointer-events: none;">in_landing</text>
+      <text x="285" y="275" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="ControlTower" devs-port-name="in_takeoff" style="cursor: none; pointer-events: none;">in_takeoff</text>
+      <text x="415" y="145" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="ControlTower" devs-port-name="land" style="cursor: none; pointer-events: none;">land</text>
+      <text x="415" y="165" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="ControlTower" devs-port-name="takeoff" style="cursor: none; pointer-events: none;">takeoff</text>
+      <text x="415" y="230" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="ControlTower" devs-port-name="stop_landing" style="cursor: none; pointer-events: none;">stop_landing</text>
+      <text x="415" y="250" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="ControlTower" devs-port-name="stop_takeoff" style="cursor: none; pointer-events: none;">stop_takeoff</text>
+      <text x="415" y="270" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="ControlTower" devs-port-name="done_landing" style="cursor: none; pointer-events: none;">done_landing</text>
+      <text x="415" y="290" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="ControlTower" devs-port-name="done_takeoff" style="cursor: none; pointer-events: none;">done_takeoff</text>
+
+      <!-- Runway (atomic) - moved right for more spacing -->
+      <rect x="580" y="120" width="100" height="180" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-4" devs-model-id="Runway" style="cursor: none; pointer-events: none;"></rect>
+      <text x="630" y="215" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" devs-model-id="Runway" style="cursor: none; pointer-events: none;">Runway</text>
+      <text x="575" y="150" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Runway" devs-port-name="land" style="cursor: none; pointer-events: none;">land</text>
+      <text x="575" y="275" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Runway" devs-port-name="takeoff" style="cursor: none; pointer-events: none;">takeoff</text>
+      <text x="685" y="150" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Runway" devs-port-name="landing_exit" style="cursor: none; pointer-events: none;" class="">landing_exit</text>
+      <text x="685" y="275" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Runway" devs-port-name="takeoff_exit" style="cursor: none; pointer-events: none;">takeoff_exit</text>
+
+      <!-- Hangar (coupled) - moved right -->
+      <rect x="750" y="30" width="400" height="450" fill="none" stroke="#000000" stroke-dasharray="3 3" pointer-events="all" id="e-5" devs-model-id="Hangar" style="cursor: none; pointer-events: none;" class=""></rect>
+      <text x="765" y="50" fill="#000000" font-family="Helvetica" font-size="12px" devs-model-id="Hangar" style="cursor: none; pointer-events: none;">Hangar</text>
+      <text x="745" y="120" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Hangar" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="745" y="440" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Hangar" devs-port-name="hangar_exit" style="cursor: none; pointer-events: none;">hangar_exit</text>
+
+      <!-- Selector (atomic) inside Hangar -->
+      <rect x="780" y="70" width="90" height="100" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-6" devs-model-id="Selector" style="cursor: none; pointer-events: none;"></rect>
+      <text x="825" y="125" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" devs-model-id="Selector" style="cursor: none; pointer-events: none;">Selector</text>
+      <text x="775" y="100" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Selector" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="875" y="90" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Selector" devs-port-name="out1" style="cursor: none; pointer-events: none;">out1</text>
+      <text x="875" y="110" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Selector" devs-port-name="out2" style="cursor: none; pointer-events: none;">out2</text>
+      <text x="875" y="130" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Selector" devs-port-name="out3" style="cursor: none; pointer-events: none;">out3</text>
+      <text x="875" y="150" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Selector" devs-port-name="out4" style="cursor: none; pointer-events: none;">out4</text>
+
+      <!-- StorageBank (coupled) inside Hangar -->
+      <rect x="770" y="190" width="360" height="270" fill="none" stroke="#000000" stroke-dasharray="3 3" pointer-events="all" id="e-7" devs-model-id="StorageBank" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Bay2" devs-link-pA="out"></rect>
+      <text x="785" y="210" fill="#000000" font-family="Helvetica" font-size="11px" devs-model-id="StorageBank" style="cursor: none; pointer-events: none;">StorageBank</text>
+      <text x="765" y="240" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="StorageBank" devs-port-name="in1" style="cursor: none; pointer-events: none;">in1</text>
+      <text x="765" y="270" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="StorageBank" devs-port-name="in2" style="cursor: none; pointer-events: none;">in2</text>
+      <text x="765" y="300" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="StorageBank" devs-port-name="in3" style="cursor: none; pointer-events: none;">in3</text>
+      <text x="765" y="330" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="StorageBank" devs-port-name="in4" style="cursor: none; pointer-events: none;">in4</text>
+      <text x="765" y="430" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="StorageBank" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- Bay1 (atomic) -->
+      <rect x="790" y="230" width="70" height="50" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-8" devs-model-id="Bay1" style="cursor: none; pointer-events: none;"></rect>
+      <text x="825" y="260" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle" devs-model-id="Bay1" style="cursor: none; pointer-events: none;">Bay1</text>
+      <text x="785" y="250" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Bay1" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="865" y="250" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Bay1" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- Bay2 (atomic) -->
+      <rect x="790" y="290" width="70" height="50" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-9" devs-model-id="Bay2" style="cursor: none; pointer-events: none;"></rect>
+      <text x="825" y="320" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle" devs-model-id="Bay2" style="cursor: none; pointer-events: none;">Bay2</text>
+      <text x="785" y="310" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Bay2" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="865" y="310" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Bay2" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- Bay3 (atomic) -->
+      <rect x="790" y="350" width="70" height="50" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-10" devs-model-id="Bay3" style="cursor: none; pointer-events: none;"></rect>
+      <text x="825" y="380" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle" devs-model-id="Bay3" style="cursor: none; pointer-events: none;">Bay3</text>
+      <text x="785" y="370" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Bay3" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="865" y="370" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Bay3" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- Bay4 (atomic) -->
+      <rect x="790" y="410" width="70" height="50" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-11" devs-model-id="Bay4" style="cursor: none; pointer-events: none;"></rect>
+      <text x="825" y="440" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle" devs-model-id="Bay4" style="cursor: none; pointer-events: none;">Bay4</text>
+      <text x="785" y="430" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Bay4" devs-port-name="in" style="cursor: none; pointer-events: none;">in</text>
+      <text x="865" y="430" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Bay4" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- Merger (atomic) -->
+      <rect x="1020" y="300" width="90" height="100" fill="#ffffff" stroke="#000000" pointer-events="all" id="e-12" devs-model-id="Merger" style="cursor: none; pointer-events: none;"></rect>
+      <text x="1065" y="355" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" devs-model-id="Merger" style="cursor: none; pointer-events: none;">Merger</text>
+      <text x="1015" y="320" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Merger" devs-port-name="in1" style="cursor: none; pointer-events: none;">in1</text>
+      <text x="1015" y="340" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Merger" devs-port-name="in2" style="cursor: none; pointer-events: none;">in2</text>
+      <text x="1015" y="360" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Merger" devs-port-name="in3" style="cursor: none; pointer-events: none;">in3</text>
+      <text x="1015" y="380" fill="#000000" font-family="Helvetica" font-size="9px" text-anchor="end" devs-port-model="Merger" devs-port-name="in4" style="cursor: none; pointer-events: none;">in4</text>
+      <text x="1115" y="355" fill="#000000" font-family="Helvetica" font-size="9px" devs-port-model="Merger" devs-port-name="out" style="cursor: none; pointer-events: none;">out</text>
+
+      <!-- === DATA FLOW CONNECTIONS === -->
+
+      <!-- Generator to landing_queue -->
+      <path d="M 100 210 L 115 210 L 115 105 L 140 105" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-13" devs-link-ma="landing_queue" devs-link-pa="in" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Generator" devs-link-pA="out"></path>
+
+      <!-- landing_queue to ControlTower -->
+      <path d="M 240 105 L 265 105 L 265 145 L 290 145" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-14" devs-link-ma="ControlTower" devs-link-pa="in_landing" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- takeoff_queue to ControlTower -->
+      <path d="M 240 305 L 265 305 L 265 275 L 290 275" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-15" devs-link-ma="ControlTower" devs-link-pa="in_takeoff" style="cursor: none; pointer-events: none;" class="" devs-link-mA="takeoff_queue" devs-link-pA="out"></path>
+
+      <!-- ControlTower to Runway (land) - more spacing -->
+      <path d="M 410 145 L 495 145 L 495 150 L 580 150" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-16" devs-link-ma="Runway" devs-link-pa="land" style="cursor: none; pointer-events: none;" class="" devs-link-mA="ControlTower" devs-link-pA="land"></path>
+
+      <!-- ControlTower to Runway (takeoff) - more spacing -->
+      <path d="M 410 165 L 510 165 L 510 275 L 580 275" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-17" devs-link-ma="Runway" devs-link-pa="takeoff" style="cursor: none; pointer-events: none;" class="" devs-link-mA="ControlTower" devs-link-pA="takeoff"></path>
+
+      <!-- Runway landing_exit to Hangar in -->
+      <path d="M 680 150 L 715 150 L 715 120 L 750 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-18" devs-link-ma="Hangar" devs-link-pa="in" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Runway" devs-link-pA="landing_exit"></path>
+
+      <!-- Hangar in to Selector in -->
+      <path d="M 750 120 L 765 120 L 765 100 L 780 100" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-19" devs-link-ma="Selector" devs-link-pa="in" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- Selector out1 to StorageBank in1 -->
+      <path d="M 870 90 L 910 90 L 910 180 L 765 180 L 765 240 L 770 240" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-20" devs-link-ma="StorageBank" devs-link-pa="in1" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Selector" devs-link-pA="out1"></path>
+
+      <!-- Selector out2 to StorageBank in2 -->
+      <path d="M 870 110 L 920 110 L 920 180 L 762 180 L 762 270 L 770 270" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-21" devs-link-ma="StorageBank" devs-link-pa="in2" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Selector" devs-link-pA="out2"></path>
+
+      <!-- Selector out3 to StorageBank in3 -->
+      <path d="M 870 130 L 930 130 L 930 180 L 759 180 L 759 300 L 770 300" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-22" devs-link-ma="StorageBank" devs-link-pa="in3" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Selector" devs-link-pA="out3"></path>
+
+      <!-- Selector out4 to StorageBank in4 -->
+      <path d="M 870 150 L 940 150 L 940 180 L 756 180 L 756 330 L 770 330" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-23" devs-link-ma="StorageBank" devs-link-pa="in4" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Selector" devs-link-pA="out4"></path>
+
+      <!-- StorageBank in1 to Bay1 in -->
+      <path d="M 770 240 L 780 240 L 780 250 L 790 250" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-24" devs-link-ma="Bay1" devs-link-pa="in" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- StorageBank in2 to Bay2 in -->
+      <path d="M 770 270 L 780 270 L 780 310 L 790 310" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-25" devs-link-ma="Bay2" devs-link-pa="in" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- StorageBank in3 to Bay3 in -->
+      <path d="M 770 300 L 780 300 L 780 370 L 790 370" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-26" devs-link-ma="Bay3" devs-link-pa="in" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- StorageBank in4 to Bay4 in -->
+      <path d="M 770 330 L 780 330 L 780 430 L 790 430" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-27" devs-link-ma="Bay4" devs-link-pa="in" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- Bay1 out to Merger in1 -->
+      <path d="M 860 250 L 940 250 L 940 320 L 1020 320" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-28" devs-link-ma="Merger" devs-link-pa="in1" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Bay1" devs-link-pA="out"></path>
+
+      <!-- Bay2 out to Merger in2 -->
+      <path d="M 860 310 L 950 310 L 950 340 L 1020 340" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-29" devs-link-ma="Merger" devs-link-pa="in2" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Bay2" devs-link-pA="out"></path>
+
+      <!-- Bay3 out to Merger in3 -->
+      <path d="M 860 370 L 960 370 L 960 360 L 1020 360" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-30" devs-link-ma="Merger" devs-link-pa="in3" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Bay3" devs-link-pA="out"></path>
+
+      <!-- Bay4 out to Merger in4 -->
+      <path d="M 860 430 L 970 430 L 970 380 L 1020 380" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-31" devs-link-ma="Merger" devs-link-pa="in4" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Bay4" devs-link-pA="out"></path>
+
+      <!-- Merger out to StorageBank out -->
+      <path d="M 1110 355 L 1120 355 L 1120 470 L 765 470 L 765 430 L 770 430" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-32" devs-link-ma="StorageBank" devs-link-pa="out" style="cursor: none; pointer-events: none;" class=""></path>
+
+      <!-- StorageBank out to Hangar hangar_exit -->
+      <path d="M 770 430 L 760 430 L 760 440 L 750 440" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-33" devs-link-ma="Hangar" devs-link-pa="hangar_exit" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- Hangar hangar_exit to takeoff_queue in -->
+      <path d="M 750 440 L 115 440 L 115 305 L 140 305" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-34" devs-link-ma="takeoff_queue" devs-link-pa="in" style="cursor: none; pointer-events: none;"></path>
+
+      <!-- Runway takeoff_exit to system output -->
+      <path d="M 680 275 L 720 275 L 720 520 L 30 520" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" id="e-35" devs-link-ma="top" devs-link-pa="out" style="cursor: none; pointer-events: none;" class="" devs-link-mA="Runway" devs-link-pA="takeoff_exit"></path>
+
+      <!-- === CONTROL SIGNAL CONNECTIONS (dashed) - with more spacing === -->
+
+      <!-- ControlTower stop_landing to landing_queue stop (y=230 -> y=145) -->
+      <path d="M 410 230 L 540 230 L 540 55 L 105 55 L 105 145 L 140 145" fill="none" stroke="#000000" stroke-dasharray="4 2" stroke-miterlimit="10" pointer-events="stroke" id="e-36" devs-link-ma="landing_queue" devs-link-pa="stop" style="cursor: none; pointer-events: none;" class="" devs-link-mA="ControlTower" devs-link-pA="stop_landing"></path>
+
+      <!-- ControlTower done_landing to landing_queue done (y=270 -> y=162) -->
+      <path d="M 410 270 L 525 270 L 525 25 L 95 25 L 95 162 L 140 162" fill="none" stroke="#000000" stroke-dasharray="4 2" stroke-miterlimit="10" pointer-events="stroke" id="e-38" devs-link-ma="landing_queue" devs-link-pa="done" style="cursor: none; pointer-events: none;" class=""></path>
+
+      <!-- ControlTower stop_takeoff to takeoff_queue stop (y=250 -> y=345) -->
+      <path d="M 410 250 L 555 250 L 555 385 L 105 385 L 105 345 L 140 345" fill="none" stroke="#000000" stroke-dasharray="4 2" stroke-miterlimit="10" pointer-events="stroke" id="e-37" devs-link-ma="takeoff_queue" devs-link-pa="stop" style="cursor: none; pointer-events: none;" class="" devs-link-mA="ControlTower" devs-link-pA="stop_takeoff"></path>
+
+      <!-- ControlTower done_takeoff to takeoff_queue done (y=290 -> y=362) -->
+      <path d="M 410 290 L 540 290 L 540 415 L 95 415 L 95 362 L 140 362" fill="none" stroke="#000000" stroke-dasharray="4 2" stroke-miterlimit="10" pointer-events="stroke" id="e-39" devs-link-ma="takeoff_queue" devs-link-pa="done" style="cursor: none; pointer-events: none;" class="" devs-link-mA="ControlTower" devs-link-pA="done_takeoff"></path>
+
+      <!-- System Output Label -->
+      <text x="30" y="535" fill="#000000" font-family="Helvetica" font-size="9px" style="cursor: none; pointer-events: none;">System Output (out)</text>
+   </g>
+</svg>
