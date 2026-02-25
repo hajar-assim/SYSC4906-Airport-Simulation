@@ -8,10 +8,10 @@
  * Course: SYSC 4906G, Winter 2026
  */
 
-#include <cadmium/simulation/root_coordinator.hpp>
-#include <cadmium/simulation/logger/stdout.hpp>
-#include <cadmium/simulation/logger/csv.hpp>
-#include <cadmium/modeling/devs/coupled.hpp>
+#include <cadmium/core/simulation/root_coordinator.hpp>
+#include "../vendor/stdout_logger.hpp"
+#include <cadmium/core/logger/csv.hpp>
+#include <cadmium/core/modeling/coupled.hpp>
 #include <cadmium/lib/iestream.hpp>
 
 #include "../atomics/controlTower.hpp"
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
     auto rootCoordinator = RootCoordinator(model);
 
     // log to csv file
-    rootCoordinator.setLogger<CSVLogger>(output_file, ";");
+    rootCoordinator.setLogger(std::make_shared<CSVLogger>(output_file, ";"));
     rootCoordinator.start();
     rootCoordinator.simulate(sim_time);
     rootCoordinator.stop();

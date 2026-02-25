@@ -12,7 +12,7 @@
 #ifndef HANGAR_HPP
 #define HANGAR_HPP
 
-#include <cadmium/modeling/devs/coupled.hpp>
+#include <cadmium/core/modeling/coupled.hpp>
 #include "../atomics/selector.hpp"
 #include "storageBank.hpp"
 

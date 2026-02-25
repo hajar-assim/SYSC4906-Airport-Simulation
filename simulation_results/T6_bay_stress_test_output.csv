@@ -1,457 +1,456 @@
-sep=;
 time;model_id;model_name;port_name;data
-0;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-0;5;Bay4;;{phase=IDLE, size=0, sigma=inf}
+0;2;Runway;;{phase=IDLE, plane=0, sigma=inf}
+0;5;Merger;;{phase=IDLE, size=0, sigma=inf}
 0;6;Bay3;;{phase=IDLE, size=0, sigma=inf}
-0;7;Bay2;;{phase=IDLE, size=0, sigma=inf}
-0;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-0;9;Selector;;{phase=IDLE, plane=0, pending=0, sigma=inf}
-0;10;Runway;;{phase=IDLE, plane=0, sigma=inf}
-0;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-0;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+0;7;Bay4;;{phase=IDLE, size=0, sigma=inf}
+0;8;Bay2;;{phase=IDLE, size=0, sigma=inf}
+0;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+0;10;Selector;;{phase=IDLE, plane=0, pending=0, sigma=inf}
+0;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+0;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 0;13;ControlTower;;{phase=IDLE, op=NONE, plane=0, pendingL=0, pendingT=0, sigma=inf}
 0;14;Generator;;60
-60;12;landing_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
+60;11;landing_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 60;14;Generator;out;10
 60;14;Generator;;30
-60;12;landing_queue;out;10
-60;12;landing_queue;;{phase=WAIT_ACK, size=0, busy=0, sigma=inf}
+60;11;landing_queue;out;10
+60;11;landing_queue;;{phase=WAIT_ACK, size=0, busy=0, sigma=inf}
 60;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=10, pendingL=0, pendingT=0, sigma=0}
-60;10;Runway;;{phase=LANDING, plane=10, sigma=60}
-60;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-60;12;landing_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
+60;2;Runway;;{phase=LANDING, plane=10, sigma=60}
+60;11;landing_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
+60;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 60;13;ControlTower;stop_landing;1
 60;13;ControlTower;stop_takeoff;1
 60;13;ControlTower;land;10
 60;13;ControlTower;;{phase=WAIT, op=LANDING, plane=10, pendingL=0, pendingT=0, sigma=60}
-90;12;landing_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+90;11;landing_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
 90;14;Generator;out;20
 90;14;Generator;;30
-120;9;Selector;;{phase=ROUTING, plane=10, pending=0, sigma=30}
-120;10;Runway;landing_exit;10
-120;10;Runway;;{phase=IDLE, plane=10, sigma=inf}
-120;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-120;12;landing_queue;;{phase=SENDING, size=2, busy=0, sigma=0}
+120;2;Runway;landing_exit;10
+120;2;Runway;;{phase=IDLE, plane=10, sigma=inf}
+120;10;Selector;;{phase=ROUTING, plane=10, pending=0, sigma=30}
+120;11;landing_queue;;{phase=SENDING, size=2, busy=0, sigma=0}
+120;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 120;13;ControlTower;done_landing;1
 120;13;ControlTower;done_takeoff;1
 120;13;ControlTower;;{phase=IDLE, op=NONE, plane=10, pendingL=0, pendingT=0, sigma=inf}
 120;14;Generator;out;30
 120;14;Generator;;30
-120;12;landing_queue;out;20
-120;12;landing_queue;;{phase=WAIT_ACK, size=1, busy=0, sigma=inf}
+120;11;landing_queue;out;20
+120;11;landing_queue;;{phase=WAIT_ACK, size=1, busy=0, sigma=inf}
 120;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=20, pendingL=0, pendingT=0, sigma=0}
-120;10;Runway;;{phase=LANDING, plane=20, sigma=60}
-120;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-120;12;landing_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+120;2;Runway;;{phase=LANDING, plane=20, sigma=60}
+120;11;landing_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+120;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 120;13;ControlTower;stop_landing;1
 120;13;ControlTower;stop_takeoff;1
 120;13;ControlTower;land;20
 120;13;ControlTower;;{phase=WAIT, op=LANDING, plane=20, pendingL=0, pendingT=0, sigma=60}
-150;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-150;9;Selector;out1;10
-150;9;Selector;;{phase=IDLE, plane=10, pending=0, sigma=inf}
-150;12;landing_queue;;{phase=WAIT_ACK, size=2, busy=1, sigma=inf}
+150;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+150;10;Selector;out1;10
+150;10;Selector;;{phase=IDLE, plane=10, pending=0, sigma=inf}
+150;11;landing_queue;;{phase=WAIT_ACK, size=2, busy=1, sigma=inf}
 150;14;Generator;out;40
 150;14;Generator;;30
-150;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-150;8;Bay1;out;10
-150;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-150;4;Merger;out;10
-150;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-150;11;takeoff_queue;;{phase=IDLE, size=1, busy=1, sigma=inf}
-180;9;Selector;;{phase=ROUTING, plane=20, pending=0, sigma=30}
-180;10;Runway;landing_exit;20
-180;10;Runway;;{phase=IDLE, plane=20, sigma=inf}
-180;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-180;12;landing_queue;;{phase=SENDING, size=3, busy=0, sigma=0}
+150;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+150;9;Bay1;out;10
+150;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+150;5;Merger;out;10
+150;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+150;12;takeoff_queue;;{phase=IDLE, size=1, busy=1, sigma=inf}
+180;2;Runway;landing_exit;20
+180;2;Runway;;{phase=IDLE, plane=20, sigma=inf}
+180;10;Selector;;{phase=ROUTING, plane=20, pending=0, sigma=30}
+180;11;landing_queue;;{phase=SENDING, size=3, busy=0, sigma=0}
+180;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 180;13;ControlTower;done_landing;1
 180;13;ControlTower;done_takeoff;1
 180;13;ControlTower;;{phase=IDLE, op=NONE, plane=20, pendingL=0, pendingT=0, sigma=inf}
 180;14;Generator;out;50
 180;14;Generator;;30
-180;11;takeoff_queue;out;10
-180;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=0, sigma=inf}
-180;12;landing_queue;out;30
-180;12;landing_queue;;{phase=WAIT_ACK, size=2, busy=0, sigma=inf}
+180;11;landing_queue;out;30
+180;11;landing_queue;;{phase=WAIT_ACK, size=2, busy=0, sigma=inf}
+180;12;takeoff_queue;out;10
+180;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=0, sigma=inf}
 180;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=30, pendingL=0, pendingT=1, sigma=0}
-180;10;Runway;;{phase=LANDING, plane=30, sigma=60}
-180;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-180;12;landing_queue;;{phase=WAIT_ACK, size=2, busy=1, sigma=inf}
+180;2;Runway;;{phase=LANDING, plane=30, sigma=60}
+180;11;landing_queue;;{phase=WAIT_ACK, size=2, busy=1, sigma=inf}
+180;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 180;13;ControlTower;stop_landing;1
 180;13;ControlTower;stop_takeoff;1
 180;13;ControlTower;land;30
 180;13;ControlTower;;{phase=WAIT, op=LANDING, plane=30, pendingL=0, pendingT=1, sigma=60}
-210;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-210;9;Selector;out1;20
-210;9;Selector;;{phase=IDLE, plane=20, pending=0, sigma=inf}
-210;12;landing_queue;;{phase=WAIT_ACK, size=3, busy=1, sigma=inf}
+210;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+210;10;Selector;out1;20
+210;10;Selector;;{phase=IDLE, plane=20, pending=0, sigma=inf}
+210;11;landing_queue;;{phase=WAIT_ACK, size=3, busy=1, sigma=inf}
 210;14;Generator;out;60
 210;14;Generator;;30
-210;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-210;8;Bay1;out;20
-210;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-210;4;Merger;out;20
-210;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-210;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-240;9;Selector;;{phase=ROUTING, plane=30, pending=0, sigma=30}
-240;10;Runway;landing_exit;30
-240;10;Runway;;{phase=IDLE, plane=30, sigma=inf}
-240;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-240;12;landing_queue;;{phase=SENDING, size=4, busy=0, sigma=0}
+210;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+210;9;Bay1;out;20
+210;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+210;5;Merger;out;20
+210;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+210;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+240;2;Runway;landing_exit;30
+240;2;Runway;;{phase=IDLE, plane=30, sigma=inf}
+240;10;Selector;;{phase=ROUTING, plane=30, pending=0, sigma=30}
+240;11;landing_queue;;{phase=SENDING, size=4, busy=0, sigma=0}
+240;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 240;13;ControlTower;done_landing;1
 240;13;ControlTower;done_takeoff;1
 240;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=10, pendingL=0, pendingT=0, sigma=0}
 240;14;Generator;out;70
 240;14;Generator;;30
-240;10;Runway;;{phase=TAKEOFF, plane=10, sigma=60}
-240;11;takeoff_queue;out;20
-240;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-240;12;landing_queue;out;40
-240;12;landing_queue;;{phase=WAIT_ACK, size=3, busy=1, sigma=inf}
+240;2;Runway;;{phase=TAKEOFF, plane=10, sigma=60}
+240;11;landing_queue;out;40
+240;11;landing_queue;;{phase=WAIT_ACK, size=3, busy=1, sigma=inf}
+240;12;takeoff_queue;out;20
+240;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 240;13;ControlTower;stop_landing;1
 240;13;ControlTower;stop_takeoff;1
 240;13;ControlTower;takeoff;10
 240;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=10, pendingL=1, pendingT=1, sigma=60}
-270;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-270;9;Selector;out1;30
-270;9;Selector;;{phase=IDLE, plane=30, pending=0, sigma=inf}
-270;12;landing_queue;;{phase=WAIT_ACK, size=4, busy=1, sigma=inf}
+270;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+270;10;Selector;out1;30
+270;10;Selector;;{phase=IDLE, plane=30, pending=0, sigma=inf}
+270;11;landing_queue;;{phase=WAIT_ACK, size=4, busy=1, sigma=inf}
 270;14;Generator;out;80
 270;14;Generator;;30
-270;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-270;8;Bay1;out;30
-270;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-270;4;Merger;out;30
-270;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-270;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-300;10;Runway;takeoff_exit;10
-300;10;Runway;;{phase=IDLE, plane=10, sigma=inf}
-300;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-300;12;landing_queue;;{phase=SENDING, size=5, busy=0, sigma=0}
+270;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+270;9;Bay1;out;30
+270;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+270;5;Merger;out;30
+270;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+270;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+300;2;Runway;takeoff_exit;10
+300;2;Runway;;{phase=IDLE, plane=10, sigma=inf}
+300;11;landing_queue;;{phase=SENDING, size=5, busy=0, sigma=0}
+300;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 300;13;ControlTower;done_landing;1
 300;13;ControlTower;done_takeoff;1
 300;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=40, pendingL=0, pendingT=1, sigma=0}
 300;14;Generator;out;90
 300;14;Generator;;30
-300;10;Runway;;{phase=LANDING, plane=40, sigma=60}
-300;11;takeoff_queue;out;30
-300;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-300;12;landing_queue;out;50
-300;12;landing_queue;;{phase=WAIT_ACK, size=4, busy=1, sigma=inf}
+300;2;Runway;;{phase=LANDING, plane=40, sigma=60}
+300;11;landing_queue;out;50
+300;11;landing_queue;;{phase=WAIT_ACK, size=4, busy=1, sigma=inf}
+300;12;takeoff_queue;out;30
+300;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 300;13;ControlTower;stop_landing;1
 300;13;ControlTower;stop_takeoff;1
 300;13;ControlTower;land;40
 300;13;ControlTower;;{phase=WAIT, op=LANDING, plane=40, pendingL=1, pendingT=2, sigma=60}
-330;12;landing_queue;;{phase=WAIT_ACK, size=5, busy=1, sigma=inf}
+330;11;landing_queue;;{phase=WAIT_ACK, size=5, busy=1, sigma=inf}
 330;14;Generator;out;100
 330;14;Generator;;inf
-360;9;Selector;;{phase=ROUTING, plane=40, pending=0, sigma=30}
-360;10;Runway;landing_exit;40
-360;10;Runway;;{phase=IDLE, plane=40, sigma=inf}
-360;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-360;12;landing_queue;;{phase=SENDING, size=5, busy=0, sigma=0}
+360;2;Runway;landing_exit;40
+360;2;Runway;;{phase=IDLE, plane=40, sigma=inf}
+360;10;Selector;;{phase=ROUTING, plane=40, pending=0, sigma=30}
+360;11;landing_queue;;{phase=SENDING, size=5, busy=0, sigma=0}
+360;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 360;13;ControlTower;done_landing;1
 360;13;ControlTower;done_takeoff;1
 360;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=50, pendingL=0, pendingT=2, sigma=0}
-360;10;Runway;;{phase=LANDING, plane=50, sigma=60}
-360;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-360;12;landing_queue;out;60
-360;12;landing_queue;;{phase=WAIT_ACK, size=4, busy=1, sigma=inf}
+360;2;Runway;;{phase=LANDING, plane=50, sigma=60}
+360;11;landing_queue;out;60
+360;11;landing_queue;;{phase=WAIT_ACK, size=4, busy=1, sigma=inf}
+360;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 360;13;ControlTower;stop_landing;1
 360;13;ControlTower;stop_takeoff;1
 360;13;ControlTower;land;50
 360;13;ControlTower;;{phase=WAIT, op=LANDING, plane=50, pendingL=1, pendingT=2, sigma=60}
-390;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-390;9;Selector;out1;40
-390;9;Selector;;{phase=IDLE, plane=40, pending=0, sigma=inf}
-390;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-390;8;Bay1;out;40
-390;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-390;4;Merger;out;40
-390;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-390;11;takeoff_queue;;{phase=IDLE, size=1, busy=1, sigma=inf}
-420;9;Selector;;{phase=ROUTING, plane=50, pending=0, sigma=30}
-420;10;Runway;landing_exit;50
-420;10;Runway;;{phase=IDLE, plane=50, sigma=inf}
-420;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-420;12;landing_queue;;{phase=SENDING, size=4, busy=0, sigma=0}
+390;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+390;10;Selector;out1;40
+390;10;Selector;;{phase=IDLE, plane=40, pending=0, sigma=inf}
+390;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+390;9;Bay1;out;40
+390;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+390;5;Merger;out;40
+390;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+390;12;takeoff_queue;;{phase=IDLE, size=1, busy=1, sigma=inf}
+420;2;Runway;landing_exit;50
+420;2;Runway;;{phase=IDLE, plane=50, sigma=inf}
+420;10;Selector;;{phase=ROUTING, plane=50, pending=0, sigma=30}
+420;11;landing_queue;;{phase=SENDING, size=4, busy=0, sigma=0}
+420;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 420;13;ControlTower;done_landing;1
 420;13;ControlTower;done_takeoff;1
 420;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=60, pendingL=0, pendingT=2, sigma=0}
-420;10;Runway;;{phase=LANDING, plane=60, sigma=60}
-420;11;takeoff_queue;out;40
-420;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-420;12;landing_queue;out;70
-420;12;landing_queue;;{phase=WAIT_ACK, size=3, busy=1, sigma=inf}
+420;2;Runway;;{phase=LANDING, plane=60, sigma=60}
+420;11;landing_queue;out;70
+420;11;landing_queue;;{phase=WAIT_ACK, size=3, busy=1, sigma=inf}
+420;12;takeoff_queue;out;40
+420;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 420;13;ControlTower;stop_landing;1
 420;13;ControlTower;stop_takeoff;1
 420;13;ControlTower;land;60
 420;13;ControlTower;;{phase=WAIT, op=LANDING, plane=60, pendingL=1, pendingT=3, sigma=60}
-450;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-450;9;Selector;out1;50
-450;9;Selector;;{phase=IDLE, plane=50, pending=0, sigma=inf}
-450;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-450;8;Bay1;out;50
-450;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-450;4;Merger;out;50
-450;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-450;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-480;9;Selector;;{phase=ROUTING, plane=60, pending=0, sigma=30}
-480;10;Runway;landing_exit;60
-480;10;Runway;;{phase=IDLE, plane=60, sigma=inf}
-480;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-480;12;landing_queue;;{phase=SENDING, size=3, busy=0, sigma=0}
+450;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+450;10;Selector;out1;50
+450;10;Selector;;{phase=IDLE, plane=50, pending=0, sigma=inf}
+450;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+450;9;Bay1;out;50
+450;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+450;5;Merger;out;50
+450;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+450;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+480;2;Runway;landing_exit;60
+480;2;Runway;;{phase=IDLE, plane=60, sigma=inf}
+480;10;Selector;;{phase=ROUTING, plane=60, pending=0, sigma=30}
+480;11;landing_queue;;{phase=SENDING, size=3, busy=0, sigma=0}
+480;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 480;13;ControlTower;done_landing;1
 480;13;ControlTower;done_takeoff;1
 480;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=70, pendingL=0, pendingT=3, sigma=0}
-480;10;Runway;;{phase=LANDING, plane=70, sigma=60}
-480;11;takeoff_queue;out;50
-480;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-480;12;landing_queue;out;80
-480;12;landing_queue;;{phase=WAIT_ACK, size=2, busy=1, sigma=inf}
+480;2;Runway;;{phase=LANDING, plane=70, sigma=60}
+480;11;landing_queue;out;80
+480;11;landing_queue;;{phase=WAIT_ACK, size=2, busy=1, sigma=inf}
+480;12;takeoff_queue;out;50
+480;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 480;13;ControlTower;stop_landing;1
 480;13;ControlTower;stop_takeoff;1
 480;13;ControlTower;land;70
 480;13;ControlTower;;{phase=WAIT, op=LANDING, plane=70, pendingL=1, pendingT=4, sigma=60}
-510;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-510;9;Selector;out1;60
-510;9;Selector;;{phase=IDLE, plane=60, pending=0, sigma=inf}
-510;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-510;8;Bay1;out;60
-510;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-510;4;Merger;out;60
-510;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-510;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-540;9;Selector;;{phase=ROUTING, plane=70, pending=0, sigma=30}
-540;10;Runway;landing_exit;70
-540;10;Runway;;{phase=IDLE, plane=70, sigma=inf}
-540;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-540;12;landing_queue;;{phase=SENDING, size=2, busy=0, sigma=0}
+510;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+510;10;Selector;out1;60
+510;10;Selector;;{phase=IDLE, plane=60, pending=0, sigma=inf}
+510;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+510;9;Bay1;out;60
+510;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+510;5;Merger;out;60
+510;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+510;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+540;2;Runway;landing_exit;70
+540;2;Runway;;{phase=IDLE, plane=70, sigma=inf}
+540;10;Selector;;{phase=ROUTING, plane=70, pending=0, sigma=30}
+540;11;landing_queue;;{phase=SENDING, size=2, busy=0, sigma=0}
+540;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 540;13;ControlTower;done_landing;1
 540;13;ControlTower;done_takeoff;1
 540;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=80, pendingL=0, pendingT=4, sigma=0}
-540;10;Runway;;{phase=LANDING, plane=80, sigma=60}
-540;11;takeoff_queue;out;60
-540;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-540;12;landing_queue;out;90
-540;12;landing_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+540;2;Runway;;{phase=LANDING, plane=80, sigma=60}
+540;11;landing_queue;out;90
+540;11;landing_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+540;12;takeoff_queue;out;60
+540;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 540;13;ControlTower;stop_landing;1
 540;13;ControlTower;stop_takeoff;1
 540;13;ControlTower;land;80
 540;13;ControlTower;;{phase=WAIT, op=LANDING, plane=80, pendingL=1, pendingT=5, sigma=60}
-570;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-570;9;Selector;out1;70
-570;9;Selector;;{phase=IDLE, plane=70, pending=0, sigma=inf}
-570;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-570;8;Bay1;out;70
-570;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-570;4;Merger;out;70
-570;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-570;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-600;9;Selector;;{phase=ROUTING, plane=80, pending=0, sigma=30}
-600;10;Runway;landing_exit;80
-600;10;Runway;;{phase=IDLE, plane=80, sigma=inf}
-600;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-600;12;landing_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
+570;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+570;10;Selector;out1;70
+570;10;Selector;;{phase=IDLE, plane=70, pending=0, sigma=inf}
+570;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+570;9;Bay1;out;70
+570;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+570;5;Merger;out;70
+570;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+570;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+600;2;Runway;landing_exit;80
+600;2;Runway;;{phase=IDLE, plane=80, sigma=inf}
+600;10;Selector;;{phase=ROUTING, plane=80, pending=0, sigma=30}
+600;11;landing_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
+600;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 600;13;ControlTower;done_landing;1
 600;13;ControlTower;done_takeoff;1
 600;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=90, pendingL=0, pendingT=5, sigma=0}
-600;10;Runway;;{phase=LANDING, plane=90, sigma=60}
-600;11;takeoff_queue;out;70
-600;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-600;12;landing_queue;out;100
-600;12;landing_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
+600;2;Runway;;{phase=LANDING, plane=90, sigma=60}
+600;11;landing_queue;out;100
+600;11;landing_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
+600;12;takeoff_queue;out;70
+600;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 600;13;ControlTower;stop_landing;1
 600;13;ControlTower;stop_takeoff;1
 600;13;ControlTower;land;90
 600;13;ControlTower;;{phase=WAIT, op=LANDING, plane=90, pendingL=1, pendingT=6, sigma=60}
-630;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-630;9;Selector;out1;80
-630;9;Selector;;{phase=IDLE, plane=80, pending=0, sigma=inf}
-630;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-630;8;Bay1;out;80
-630;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-630;4;Merger;out;80
-630;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-630;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-660;9;Selector;;{phase=ROUTING, plane=90, pending=0, sigma=30}
-660;10;Runway;landing_exit;90
-660;10;Runway;;{phase=IDLE, plane=90, sigma=inf}
-660;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-660;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+630;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+630;10;Selector;out1;80
+630;10;Selector;;{phase=IDLE, plane=80, pending=0, sigma=inf}
+630;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+630;9;Bay1;out;80
+630;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+630;5;Merger;out;80
+630;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+630;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+660;2;Runway;landing_exit;90
+660;2;Runway;;{phase=IDLE, plane=90, sigma=inf}
+660;10;Selector;;{phase=ROUTING, plane=90, pending=0, sigma=30}
+660;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+660;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 660;13;ControlTower;done_landing;1
 660;13;ControlTower;done_takeoff;1
 660;13;ControlTower;;{phase=SIGNAL, op=LANDING, plane=100, pendingL=0, pendingT=6, sigma=0}
-660;10;Runway;;{phase=LANDING, plane=100, sigma=60}
-660;11;takeoff_queue;out;80
-660;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-660;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+660;2;Runway;;{phase=LANDING, plane=100, sigma=60}
+660;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+660;12;takeoff_queue;out;80
+660;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 660;13;ControlTower;stop_landing;1
 660;13;ControlTower;stop_takeoff;1
 660;13;ControlTower;land;100
 660;13;ControlTower;;{phase=WAIT, op=LANDING, plane=100, pendingL=0, pendingT=7, sigma=60}
-690;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-690;9;Selector;out1;90
-690;9;Selector;;{phase=IDLE, plane=90, pending=0, sigma=inf}
-690;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-690;8;Bay1;out;90
-690;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-690;4;Merger;out;90
-690;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-690;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-720;9;Selector;;{phase=ROUTING, plane=100, pending=0, sigma=30}
-720;10;Runway;landing_exit;100
-720;10;Runway;;{phase=IDLE, plane=100, sigma=inf}
-720;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-720;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+690;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+690;10;Selector;out1;90
+690;10;Selector;;{phase=IDLE, plane=90, pending=0, sigma=inf}
+690;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+690;9;Bay1;out;90
+690;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+690;5;Merger;out;90
+690;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+690;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+720;2;Runway;landing_exit;100
+720;2;Runway;;{phase=IDLE, plane=100, sigma=inf}
+720;10;Selector;;{phase=ROUTING, plane=100, pending=0, sigma=30}
+720;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+720;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 720;13;ControlTower;done_landing;1
 720;13;ControlTower;done_takeoff;1
 720;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=20, pendingL=0, pendingT=6, sigma=0}
-720;10;Runway;;{phase=TAKEOFF, plane=20, sigma=60}
-720;11;takeoff_queue;out;90
-720;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-720;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+720;2;Runway;;{phase=TAKEOFF, plane=20, sigma=60}
+720;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+720;12;takeoff_queue;out;90
+720;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 720;13;ControlTower;stop_landing;1
 720;13;ControlTower;stop_takeoff;1
 720;13;ControlTower;takeoff;20
 720;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=20, pendingL=0, pendingT=7, sigma=60}
-750;8;Bay1;;{phase=ACTIVE, size=1, sigma=0}
-750;9;Selector;out1;100
-750;9;Selector;;{phase=IDLE, plane=100, pending=0, sigma=inf}
-750;4;Merger;;{phase=ACTIVE, size=1, sigma=0}
-750;8;Bay1;out;100
-750;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-750;4;Merger;out;100
-750;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-750;11;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
-780;10;Runway;takeoff_exit;20
-780;10;Runway;;{phase=IDLE, plane=20, sigma=inf}
-780;11;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
-780;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+750;9;Bay1;;{phase=ACTIVE, size=1, sigma=0}
+750;10;Selector;out1;100
+750;10;Selector;;{phase=IDLE, plane=100, pending=0, sigma=inf}
+750;5;Merger;;{phase=ACTIVE, size=1, sigma=0}
+750;9;Bay1;out;100
+750;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+750;5;Merger;out;100
+750;5;Merger;;{phase=IDLE, size=0, sigma=inf}
+750;12;takeoff_queue;;{phase=WAIT_ACK, size=1, busy=1, sigma=inf}
+780;2;Runway;takeoff_exit;20
+780;2;Runway;;{phase=IDLE, plane=20, sigma=inf}
+780;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+780;12;takeoff_queue;;{phase=SENDING, size=1, busy=0, sigma=0}
 780;13;ControlTower;done_landing;1
 780;13;ControlTower;done_takeoff;1
 780;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=30, pendingL=0, pendingT=6, sigma=0}
-780;10;Runway;;{phase=TAKEOFF, plane=30, sigma=60}
-780;11;takeoff_queue;out;100
-780;11;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
-780;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+780;2;Runway;;{phase=TAKEOFF, plane=30, sigma=60}
+780;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+780;12;takeoff_queue;out;100
+780;12;takeoff_queue;;{phase=WAIT_ACK, size=0, busy=1, sigma=inf}
 780;13;ControlTower;stop_landing;1
 780;13;ControlTower;stop_takeoff;1
 780;13;ControlTower;takeoff;30
 780;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=30, pendingL=0, pendingT=7, sigma=60}
-840;10;Runway;takeoff_exit;30
-840;10;Runway;;{phase=IDLE, plane=30, sigma=inf}
-840;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-840;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+840;2;Runway;takeoff_exit;30
+840;2;Runway;;{phase=IDLE, plane=30, sigma=inf}
+840;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+840;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 840;13;ControlTower;done_landing;1
 840;13;ControlTower;done_takeoff;1
 840;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=40, pendingL=0, pendingT=6, sigma=0}
-840;10;Runway;;{phase=TAKEOFF, plane=40, sigma=60}
-840;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-840;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+840;2;Runway;;{phase=TAKEOFF, plane=40, sigma=60}
+840;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+840;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 840;13;ControlTower;stop_landing;1
 840;13;ControlTower;stop_takeoff;1
 840;13;ControlTower;takeoff;40
 840;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=40, pendingL=0, pendingT=6, sigma=60}
-900;10;Runway;takeoff_exit;40
-900;10;Runway;;{phase=IDLE, plane=40, sigma=inf}
-900;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-900;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+900;2;Runway;takeoff_exit;40
+900;2;Runway;;{phase=IDLE, plane=40, sigma=inf}
+900;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+900;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 900;13;ControlTower;done_landing;1
 900;13;ControlTower;done_takeoff;1
 900;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=50, pendingL=0, pendingT=5, sigma=0}
-900;10;Runway;;{phase=TAKEOFF, plane=50, sigma=60}
-900;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-900;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+900;2;Runway;;{phase=TAKEOFF, plane=50, sigma=60}
+900;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+900;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 900;13;ControlTower;stop_landing;1
 900;13;ControlTower;stop_takeoff;1
 900;13;ControlTower;takeoff;50
 900;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=50, pendingL=0, pendingT=5, sigma=60}
-960;10;Runway;takeoff_exit;50
-960;10;Runway;;{phase=IDLE, plane=50, sigma=inf}
-960;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-960;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+960;2;Runway;takeoff_exit;50
+960;2;Runway;;{phase=IDLE, plane=50, sigma=inf}
+960;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+960;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 960;13;ControlTower;done_landing;1
 960;13;ControlTower;done_takeoff;1
 960;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=60, pendingL=0, pendingT=4, sigma=0}
-960;10;Runway;;{phase=TAKEOFF, plane=60, sigma=60}
-960;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-960;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+960;2;Runway;;{phase=TAKEOFF, plane=60, sigma=60}
+960;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+960;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 960;13;ControlTower;stop_landing;1
 960;13;ControlTower;stop_takeoff;1
 960;13;ControlTower;takeoff;60
 960;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=60, pendingL=0, pendingT=4, sigma=60}
-1020;10;Runway;takeoff_exit;60
-1020;10;Runway;;{phase=IDLE, plane=60, sigma=inf}
-1020;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-1020;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1020;2;Runway;takeoff_exit;60
+1020;2;Runway;;{phase=IDLE, plane=60, sigma=inf}
+1020;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1020;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 1020;13;ControlTower;done_landing;1
 1020;13;ControlTower;done_takeoff;1
 1020;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=70, pendingL=0, pendingT=3, sigma=0}
-1020;10;Runway;;{phase=TAKEOFF, plane=70, sigma=60}
-1020;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-1020;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1020;2;Runway;;{phase=TAKEOFF, plane=70, sigma=60}
+1020;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1020;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 1020;13;ControlTower;stop_landing;1
 1020;13;ControlTower;stop_takeoff;1
 1020;13;ControlTower;takeoff;70
 1020;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=70, pendingL=0, pendingT=3, sigma=60}
-1080;10;Runway;takeoff_exit;70
-1080;10;Runway;;{phase=IDLE, plane=70, sigma=inf}
-1080;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-1080;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1080;2;Runway;takeoff_exit;70
+1080;2;Runway;;{phase=IDLE, plane=70, sigma=inf}
+1080;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1080;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 1080;13;ControlTower;done_landing;1
 1080;13;ControlTower;done_takeoff;1
 1080;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=80, pendingL=0, pendingT=2, sigma=0}
-1080;10;Runway;;{phase=TAKEOFF, plane=80, sigma=60}
-1080;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-1080;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1080;2;Runway;;{phase=TAKEOFF, plane=80, sigma=60}
+1080;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1080;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 1080;13;ControlTower;stop_landing;1
 1080;13;ControlTower;stop_takeoff;1
 1080;13;ControlTower;takeoff;80
 1080;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=80, pendingL=0, pendingT=2, sigma=60}
-1140;10;Runway;takeoff_exit;80
-1140;10;Runway;;{phase=IDLE, plane=80, sigma=inf}
-1140;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-1140;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1140;2;Runway;takeoff_exit;80
+1140;2;Runway;;{phase=IDLE, plane=80, sigma=inf}
+1140;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1140;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 1140;13;ControlTower;done_landing;1
 1140;13;ControlTower;done_takeoff;1
 1140;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=90, pendingL=0, pendingT=1, sigma=0}
-1140;10;Runway;;{phase=TAKEOFF, plane=90, sigma=60}
-1140;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-1140;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1140;2;Runway;;{phase=TAKEOFF, plane=90, sigma=60}
+1140;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1140;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 1140;13;ControlTower;stop_landing;1
 1140;13;ControlTower;stop_takeoff;1
 1140;13;ControlTower;takeoff;90
 1140;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=90, pendingL=0, pendingT=1, sigma=60}
-1200;10;Runway;takeoff_exit;90
-1200;10;Runway;;{phase=IDLE, plane=90, sigma=inf}
-1200;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-1200;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1200;2;Runway;takeoff_exit;90
+1200;2;Runway;;{phase=IDLE, plane=90, sigma=inf}
+1200;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1200;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 1200;13;ControlTower;done_landing;1
 1200;13;ControlTower;done_takeoff;1
 1200;13;ControlTower;;{phase=SIGNAL, op=TAKEOFF, plane=100, pendingL=0, pendingT=0, sigma=0}
-1200;10;Runway;;{phase=TAKEOFF, plane=100, sigma=60}
-1200;11;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
-1200;12;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1200;2;Runway;;{phase=TAKEOFF, plane=100, sigma=60}
+1200;11;landing_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
+1200;12;takeoff_queue;;{phase=IDLE, size=0, busy=1, sigma=inf}
 1200;13;ControlTower;stop_landing;1
 1200;13;ControlTower;stop_takeoff;1
 1200;13;ControlTower;takeoff;100
 1200;13;ControlTower;;{phase=WAIT, op=TAKEOFF, plane=100, pendingL=0, pendingT=0, sigma=60}
-1260;10;Runway;takeoff_exit;100
-1260;10;Runway;;{phase=IDLE, plane=100, sigma=inf}
-1260;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-1260;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1260;2;Runway;takeoff_exit;100
+1260;2;Runway;;{phase=IDLE, plane=100, sigma=inf}
+1260;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1260;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 1260;13;ControlTower;done_landing;1
 1260;13;ControlTower;done_takeoff;1
 1260;13;ControlTower;;{phase=IDLE, op=NONE, plane=100, pendingL=0, pendingT=0, sigma=inf}
-1260;4;Merger;;{phase=IDLE, size=0, sigma=inf}
-1260;5;Bay4;;{phase=IDLE, size=0, sigma=inf}
+1260;2;Runway;;{phase=IDLE, plane=100, sigma=inf}
+1260;5;Merger;;{phase=IDLE, size=0, sigma=inf}
 1260;6;Bay3;;{phase=IDLE, size=0, sigma=inf}
-1260;7;Bay2;;{phase=IDLE, size=0, sigma=inf}
-1260;8;Bay1;;{phase=IDLE, size=0, sigma=inf}
-1260;9;Selector;;{phase=IDLE, plane=100, pending=0, sigma=inf}
-1260;10;Runway;;{phase=IDLE, plane=100, sigma=inf}
-1260;11;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
-1260;12;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1260;7;Bay4;;{phase=IDLE, size=0, sigma=inf}
+1260;8;Bay2;;{phase=IDLE, size=0, sigma=inf}
+1260;9;Bay1;;{phase=IDLE, size=0, sigma=inf}
+1260;10;Selector;;{phase=IDLE, plane=100, pending=0, sigma=inf}
+1260;11;landing_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
+1260;12;takeoff_queue;;{phase=IDLE, size=0, busy=0, sigma=inf}
 1260;13;ControlTower;;{phase=IDLE, op=NONE, plane=100, pendingL=0, pendingT=0, sigma=inf}
 1260;14;Generator;;inf

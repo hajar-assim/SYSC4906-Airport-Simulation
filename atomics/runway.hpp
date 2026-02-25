@@ -14,7 +14,7 @@
 #ifndef RUNWAY_HPP
 #define RUNWAY_HPP
 
-#include <cadmium/modeling/devs/atomic.hpp>
+#include <cadmium/core/modeling/atomic.hpp>
 #include <iostream>
 #include <limits>
 

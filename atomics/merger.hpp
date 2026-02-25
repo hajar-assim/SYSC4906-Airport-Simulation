@@ -14,7 +14,7 @@
 #ifndef MERGER_HPP
 #define MERGER_HPP
 
-#include <cadmium/modeling/devs/atomic.hpp>
+#include <cadmium/core/modeling/atomic.hpp>
 #include <iostream>
 #include <queue>
 #include <limits>
