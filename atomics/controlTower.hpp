@@ -9,6 +9,10 @@
  *   - SIGNAL: Send stop signals to queues and command to runway (Ta = 0)
  *   - WAIT: Runway is busy, wait 60 seconds
  *
+ * Bug #8 Fix: Added pending_landings and pending_takeoffs buffers to handle
+ * race conditions when both queues output simultaneously, or when planes
+ * arrive while ControlTower is busy processing another operation.
+ *
  * Authors: Hasib Khodayar & Hajar Assim
  */
 
@@ -18,6 +22,7 @@
 #include <cadmium/modeling/devs/atomic.hpp>
 #include <iostream>
 #include <limits>
+#include <queue>
 
 using namespace cadmium;
 
@@ -29,6 +34,8 @@ struct ControlTowerState {
     OperationType operation_type;
     int plane_id;
     double sigma;
+    std::queue<int> pending_landings;  // holds landing planes that arrive while busy
+    std::queue<int> pending_takeoffs;  // holds takeoff planes that arrive while busy
 
     static constexpr double RUNWAY_TIME = 60.0;  // 1 min for runway ops
 
@@ -36,7 +43,9 @@ struct ControlTowerState {
         : phase(TowerPhase::IDLE),
           operation_type(OperationType::NONE),
           plane_id(0),
-          sigma(std::numeric_limits<double>::infinity()) {}
+          sigma(std::numeric_limits<double>::infinity()),
+          pending_landings(),
+          pending_takeoffs() {}
 };
 
 std::ostream& operator<<(std::ostream &out, const ControlTowerState& state) {
@@ -53,7 +62,10 @@ std::ostream& operator<<(std::ostream &out, const ControlTowerState& state) {
         case OperationType::TAKEOFF: opStr = "TAKEOFF"; break;
     }
     out << "{phase=" << phaseStr << ", op=" << opStr
-        << ", plane=" << state.plane_id << ", sigma=" << state.sigma << "}";
+        << ", plane=" << state.plane_id
+        << ", pendingL=" << state.pending_landings.size()
+        << ", pendingT=" << state.pending_takeoffs.size()
+        << ", sigma=" << state.sigma << "}";
     return out;
 }
 
@@ -86,16 +98,33 @@ public:
     void internalTransition(ControlTowerState& state) const override {
         switch (state.phase) {
             case TowerPhase::SIGNAL:
-                // just sent commands now wait for runway
+                // commands sent, now wait for runway
                 state.phase = TowerPhase::WAIT;
                 state.sigma = ControlTowerState::RUNWAY_TIME;
                 break;
 
             case TowerPhase::WAIT:
-                // runway done go back to idle
-                state.phase = TowerPhase::IDLE;
-                state.operation_type = OperationType::NONE;
-                state.sigma = std::numeric_limits<double>::infinity();
+                // runway done, check pending planes (landing has priority)
+                if (!state.pending_landings.empty()) {
+                    // process buffered landing
+                    state.plane_id = state.pending_landings.front();
+                    state.pending_landings.pop();
+                    state.operation_type = OperationType::LANDING;
+                    state.phase = TowerPhase::SIGNAL;
+                    state.sigma = 0.0;
+                } else if (!state.pending_takeoffs.empty()) {
+                    // process buffered takeoff
+                    state.plane_id = state.pending_takeoffs.front();
+                    state.pending_takeoffs.pop();
+                    state.operation_type = OperationType::TAKEOFF;
+                    state.phase = TowerPhase::SIGNAL;
+                    state.sigma = 0.0;
+                } else {
+                    // nothing pending, go back to idle
+                    state.phase = TowerPhase::IDLE;
+                    state.operation_type = OperationType::NONE;
+                    state.sigma = std::numeric_limits<double>::infinity();
+                }
                 break;
 
             case TowerPhase::IDLE:
@@ -105,18 +134,33 @@ public:
     }
 
     void externalTransition(ControlTowerState& state, double e) const override {
-        // only accept requests when idle
+        // always buffer inputs to prevent plane loss when both queues send at once
+        if (!in_landing->empty()) {
+            for (const auto& plane : in_landing->getBag()) {
+                state.pending_landings.push(plane);
+            }
+        }
+        if (!in_takeoff->empty()) {
+            for (const auto& plane : in_takeoff->getBag()) {
+                state.pending_takeoffs.push(plane);
+            }
+        }
+
+        // only process when idle
         if (state.phase != TowerPhase::IDLE) return;
 
         // landing has priority
-        if (!in_landing->empty()) {
-            state.plane_id = in_landing->getBag().back();
+        if (!state.pending_landings.empty()) {
+            state.plane_id = state.pending_landings.front();
+            state.pending_landings.pop();
             state.operation_type = OperationType::LANDING;
             state.phase = TowerPhase::SIGNAL;
             state.sigma = 0.0;
         }
-        else if (!in_takeoff->empty()) {
-            state.plane_id = in_takeoff->getBag().back();
+        // otherwise process takeoffs
+        else if (!state.pending_takeoffs.empty()) {
+            state.plane_id = state.pending_takeoffs.front();
+            state.pending_takeoffs.pop();
             state.operation_type = OperationType::TAKEOFF;
             state.phase = TowerPhase::SIGNAL;
             state.sigma = 0.0;
@@ -126,11 +170,11 @@ public:
     void output(const ControlTowerState& state) const override {
         switch (state.phase) {
             case TowerPhase::SIGNAL:
-                // stop both queues
+                // stop both queues while runway is in use
                 stop_landing->addMessage(1);
                 stop_takeoff->addMessage(1);
 
-                // send runway command
+                // tell runway what to do
                 if (state.operation_type == OperationType::LANDING) {
                     land->addMessage(state.plane_id);
                 } else if (state.operation_type == OperationType::TAKEOFF) {
@@ -139,7 +183,7 @@ public:
                 break;
 
             case TowerPhase::WAIT:
-                // tell queues they can resume
+                // let queues know they can send again
                 done_landing->addMessage(1);
                 done_takeoff->addMessage(1);
                 break;
