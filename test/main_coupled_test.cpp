@@ -11,13 +11,14 @@
  * Course: SYSC 4906G, Winter 2026
  */
 
-#include <cadmium/simulation/root_coordinator.hpp>
-#include <cadmium/simulation/logger/stdout.hpp>
-#include <cadmium/modeling/devs/coupled.hpp>
+#include <cadmium/core/simulation/root_coordinator.hpp>
+#include "../vendor/stdout_logger.hpp"
+#include <cadmium/core/modeling/coupled.hpp>
+#include <fstream>
+#include <cadmium/lib/iestream.hpp>
 #include "../coupled/hangar.hpp"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <tuple>
@@ -128,7 +129,7 @@ void runStorageBankTest(const std::string& test_id, const std::string& input_fil
     auto model = std::make_shared<StorageBankTestBench>("StorageBankTest", input_file.c_str());
     auto rootCoordinator = RootCoordinator(model);
 
-    rootCoordinator.setLogger<STDOUTLogger>(";");
+    rootCoordinator.setLogger(std::make_shared<STDOUTLogger>(";"));
     rootCoordinator.start();
     rootCoordinator.simulate(sim_time);
     rootCoordinator.stop();
@@ -145,7 +146,7 @@ void runHangarTest(const std::string& test_id, const std::string& input_file, do
     auto model = std::make_shared<HangarTestBench>("HangarTest", input_file.c_str());
     auto rootCoordinator = RootCoordinator(model);
 
-    rootCoordinator.setLogger<STDOUTLogger>(";");
+    rootCoordinator.setLogger(std::make_shared<STDOUTLogger>(";"));
     rootCoordinator.start();
     rootCoordinator.simulate(sim_time);
     rootCoordinator.stop();

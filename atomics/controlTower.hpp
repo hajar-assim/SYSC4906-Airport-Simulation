@@ -19,7 +19,7 @@
 #ifndef CONTROL_TOWER_HPP
 #define CONTROL_TOWER_HPP
 
-#include <cadmium/modeling/devs/atomic.hpp>
+#include <cadmium/core/modeling/atomic.hpp>
 #include <iostream>
 #include <limits>
 #include <queue>

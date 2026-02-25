@@ -11,7 +11,7 @@
 #ifndef STORAGE_BANK_HPP
 #define STORAGE_BANK_HPP
 
-#include <cadmium/modeling/devs/coupled.hpp>
+#include <cadmium/core/modeling/coupled.hpp>
 #include "../atomics/storageBay.hpp"
 #include "../atomics/merger.hpp"
 
