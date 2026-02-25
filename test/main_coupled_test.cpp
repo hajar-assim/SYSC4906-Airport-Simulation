@@ -1,7 +1,7 @@
 /*
  * Test Driver for Coupled Models
  *
- * Tests the integrated behavior of coupled models using IEStream input files:
+ * Tests the integrated behavior of coupled models:
  * - StorageBank (4 bays + merger): SBK-1, SBK-2
  * - Hangar (selector + storage bank): H-1, H-2
  *
@@ -14,25 +14,98 @@
 #include <cadmium/simulation/root_coordinator.hpp>
 #include <cadmium/simulation/logger/stdout.hpp>
 #include <cadmium/modeling/devs/coupled.hpp>
-#include <cadmium/lib/iestream.hpp>
-
 #include "../coupled/hangar.hpp"
 
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <vector>
+#include <tuple>
 
 using namespace cadmium;
 
-// test benches using iestream
+// multi-port generator for StorageBank (reads time port value format)
+struct StorageBankGenState {
+    double sigma;
+    double elapsed;
+    size_t current_event;
+    std::vector<std::tuple<double, int, int>> events;  // time port value
 
+    explicit StorageBankGenState() : sigma(std::numeric_limits<double>::infinity()), elapsed(0), current_event(0) {}
+};
+
+std::ostream& operator<<(std::ostream &out, const StorageBankGenState& s) {
+    out << "{event=" << s.current_event << ", sigma=" << s.sigma << "}";
+    return out;
+}
+
+class StorageBankGenerator : public Atomic<StorageBankGenState> {
+public:
+    Port<int> out1;
+    Port<int> out2;
+    Port<int> out3;
+    Port<int> out4;
+
+    StorageBankGenerator(const std::string& id, const char* input_file) : Atomic<StorageBankGenState>(id, StorageBankGenState()) {
+        out1 = addOutPort<int>("out1");
+        out2 = addOutPort<int>("out2");
+        out3 = addOutPort<int>("out3");
+        out4 = addOutPort<int>("out4");
+
+        std::ifstream file(input_file);
+        double time;
+        int port, value;
+        while (file >> time >> port >> value) {
+            state.events.push_back({time, port, value});
+        }
+
+        if (!state.events.empty()) {
+            state.sigma = std::get<0>(state.events[0]);
+        }
+    }
+
+    void internalTransition(StorageBankGenState& s) const override {
+        s.elapsed += s.sigma;
+        s.current_event++;
+        if (s.current_event < s.events.size()) {
+            s.sigma = std::get<0>(s.events[s.current_event]) - s.elapsed;
+        } else {
+            s.sigma = std::numeric_limits<double>::infinity();
+        }
+    }
+
+    void externalTransition(StorageBankGenState& s, double e) const override {}
+
+    void output(const StorageBankGenState& s) const override {
+        if (s.current_event < s.events.size()) {
+            auto& evt = s.events[s.current_event];
+            int port = std::get<1>(evt);
+            int value = std::get<2>(evt);
+            switch (port) {
+                case 1: out1->addMessage(value); break;
+                case 2: out2->addMessage(value); break;
+                case 3: out3->addMessage(value); break;
+                case 4: out4->addMessage(value); break;
+            }
+        }
+    }
+
+    [[nodiscard]] double timeAdvance(const StorageBankGenState& s) const override {
+        return s.sigma;
+    }
+};
+
+// test bench using multi-port generator
 class StorageBankTestBench : public Coupled {
 public:
     StorageBankTestBench(const std::string& id, const char* input_file) : Coupled(id) {
-        auto generator = addComponent<lib::IEStream<int>>("Generator", input_file);
+        auto generator = addComponent<StorageBankGenerator>("Generator", input_file);
         auto bank = addComponent<StorageBank>("StorageBank");
 
-        // route all inputs to in1 for single bay test
-        addCoupling(generator->out, bank->in1);
+        addCoupling(generator->out1, bank->in1);
+        addCoupling(generator->out2, bank->in2);
+        addCoupling(generator->out3, bank->in3);
+        addCoupling(generator->out4, bank->in4);
     }
 };
 
@@ -90,6 +163,9 @@ int main(int argc, char* argv[]) {
 
     std::cout << "========================================" << std::endl;
     std::cout << "Coupled Model Tests" << std::endl;
+    std::cout << "========================================" << std::endl;
+    std::cout << "StorageBank input: time port value (port 1-4)" << std::endl;
+    std::cout << "Hangar input: time value (selector routes by ID)" << std::endl;
     std::cout << "========================================" << std::endl;
     std::cout << std::endl;
 

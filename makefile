@@ -39,14 +39,18 @@ main_storage_bay_test.o: test/main_storage_bay_test.cpp
 main_merger_test.o: test/main_merger_test.cpp
 	$(CC) -g -c $(CFLAGS) $(INCLUDECADMIUM) $(INCLUDEDESTIMES) test/main_merger_test.cpp -o build/main_merger_test.o
 
+main_coupled_test.o: test/main_coupled_test.cpp
+	$(CC) -g -c $(CFLAGS) $(INCLUDECADMIUM) $(INCLUDEDESTIMES) test/main_coupled_test.cpp -o build/main_coupled_test.o
+
 #TARGET TO COMPILE ALL TESTS TOGETHER
-tests: main_control_tower_test.o main_queue_test.o main_runway_test.o main_selector_test.o main_storage_bay_test.o main_merger_test.o plane_message.o
+tests: main_control_tower_test.o main_queue_test.o main_runway_test.o main_selector_test.o main_storage_bay_test.o main_merger_test.o main_coupled_test.o plane_message.o
 	$(CC) -g -o bin/CONTROL_TOWER_TEST build/main_control_tower_test.o build/plane_message.o
 	$(CC) -g -o bin/QUEUE_TEST build/main_queue_test.o build/plane_message.o
 	$(CC) -g -o bin/RUNWAY_TEST build/main_runway_test.o build/plane_message.o
 	$(CC) -g -o bin/SELECTOR_TEST build/main_selector_test.o build/plane_message.o
 	$(CC) -g -o bin/STORAGE_BAY_TEST build/main_storage_bay_test.o build/plane_message.o
 	$(CC) -g -o bin/MERGER_TEST build/main_merger_test.o build/plane_message.o
+	$(CC) -g -o bin/COUPLED_TEST build/main_coupled_test.o build/plane_message.o
 
 #TARGET TO COMPILE ONLY AIRPORT SIMULATOR
 simulator: main_top.o plane_message.o
@@ -98,6 +102,8 @@ runalltests: tests
 	./bin/SELECTOR_TEST
 	./bin/STORAGE_BAY_TEST
 	./bin/MERGER_TEST
+	@echo "=== Running Coupled Tests ==="
+	./bin/COUPLED_TEST
 	@echo "=== All Tests Complete ==="
 
 #CLEAN COMMANDS
