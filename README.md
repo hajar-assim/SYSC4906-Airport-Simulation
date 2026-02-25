@@ -163,16 +163,16 @@ This runs all atomic and coupled model tests sequentially.
 
 ### Run Individual Test Suites
 
-```bash
-cd bin
+**Note:** Run from the project root directory (not from inside `bin/`) so tests can find input files.
 
-./CONTROL_TOWER_TEST    # CT-1 to CT-4
-./QUEUE_TEST            # Q-1 to Q-5
-./RUNWAY_TEST           # R-1 to R-3
-./SELECTOR_TEST         # S-1 to S-5
-./STORAGE_BAY_TEST      # SB-1 to SB-2
-./MERGER_TEST           # M-1 to M-3
-./COUPLED_TEST          # SBK-1, SBK-2, H-1, H-2
+```bash
+./bin/CONTROL_TOWER_TEST    # CT-1 to CT-4
+./bin/QUEUE_TEST            # Q-1 to Q-5
+./bin/RUNWAY_TEST           # R-1 to R-3
+./bin/SELECTOR_TEST         # S-1 to S-5
+./bin/STORAGE_BAY_TEST      # SB-1 to SB-2
+./bin/MERGER_TEST           # M-1 to M-3
+./bin/COUPLED_TEST          # SBK-1, SBK-2, H-1, H-2
 ```
 
 ### Test Cases
@@ -225,8 +225,7 @@ make run_T6    # Bay stress test (10 planes to Bay 1)
 ### Manual Execution
 
 ```bash
-cd bin
-./AIRPORT_SIMULATION ../input_data/T1_single_lifecycle.txt 500
+./bin/AIRPORT_SIMULATION input_data/T1_single_lifecycle.txt 500
 ```
 
 Arguments:
