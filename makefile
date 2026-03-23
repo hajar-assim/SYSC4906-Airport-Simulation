@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-std=c++17
 
 # Cadmium include path - set CADMIUM_HOME env var or edit this path
-CADMIUM_HOME ?= $(HOME)/cadmium_v2
+CADMIUM_HOME ?= /home/cadmium/rt_cadmium
 INCLUDECADMIUM=-I $(CADMIUM_HOME)/include
 INCLUDEDESTIMES=-I ../../DESTimes/include
 INCLUDEJSONEXPORTER=-I ../../CadmiumModelJSONExporter/include
